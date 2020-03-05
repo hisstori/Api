@@ -8,9 +8,14 @@ const app = express();
 app.use(parser.json());
 // Redirects user to list of all books as JSON data.
 app.get('/', function(req, res) {
-        let url = 'http://localhost:3250/books';
-        res.redirect(url);
+    book.find({})
+    .then(books => {
+        res.json(books)
+    });
 });
+//         let url = 'http://infinite-fjord-09219.herokuapp.com/books';
+//         res.redirect(url);
+// });
 // Full book listing of data.
 app.get('/books', function(req, res) {
     book.find({})
